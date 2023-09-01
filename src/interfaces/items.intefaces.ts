@@ -1,9 +1,8 @@
+import { UUID } from "crypto";
+
 export interface Items {
-    id: number;
+    id: UUID;
     name: string;
     enabled: boolean;
 }
 
-export interface ItemsList {
-    items: Items[];
-}
