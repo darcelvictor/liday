@@ -2,9 +2,11 @@
 import { useState } from "react";
 import randomizeArray from "@/domain/functions/randomizeArray";
 import { Button } from "@/components/ui/button";
+import {Items} from "@/interfaces/items.intefaces";
+import {equipe} from "@/data/team";
 
 export default function Home() {
-    const initArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const initArray: Items[] = equipe;
     const [array, setArray] = useState(initArray);
 
     function handleClick() {
@@ -16,11 +18,11 @@ export default function Home() {
         <main className="flex flex-col p-4 justify-center h-100">
             clean app super
             <ul>
-                {array.map((value, index) => {
-                    return <li key={index}>{value}</li>;
+                {array.map((e) => {
+                    return <li key={e.id}>{e.name}</li>;
                 })}
             </ul>
-            <Button onClick={handleClick}>test</Button>
+            <Button onClick={handleClick}>Shuffle</Button>
         </main>
     );
 }
