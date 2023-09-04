@@ -1,6 +1,6 @@
 import { UUID } from "crypto";
 
-export interface Items {
+export interface Collaborator {
     id: UUID;
     name: string;
     enabled: boolean;
