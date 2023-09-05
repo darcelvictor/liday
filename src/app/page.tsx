@@ -2,11 +2,11 @@
 import { useState } from "react";
 import randomizeArray from "@/domain/functions/randomizeArray";
 import { Button } from "@/components/ui/button";
-import {Items} from "@/interfaces/items.intefaces";
-import {equipe} from "@/data/team";
+import { Collaborator } from "@/interfaces/collaborator.intefaces";
+import { equipe } from "@/data/team";
 
 export default function Home() {
-    const initArray: Items[] = equipe;
+    const initArray: Collaborator[] = equipe;
     const [array, setArray] = useState(initArray);
 
     function handleClick() {
