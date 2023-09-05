@@ -1,38 +1,42 @@
-import { beforeEach, describe, expect, it, test } from "vitest";
+import { beforeEach, describe, expect, test, it } from "vitest";
 import randomizeArray from "./randomizeArray";
 import { Collaborator } from "../../interfaces/collaborator.intefaces";
 
 describe("randomizeArray", () => {
-<<<<<<< HEAD
-    beforeEach(async (context) => {
+    interface LocalTestContext {
+        collaborators: Collaborator[];
+    }
+
+    beforeEach<LocalTestContext>((context) => {
+        context.collaborators = [
+            {
+                id: "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000",
+                name: "Valentin",
+                enabled: true,
+            },
+            {
+                id: "13081df9-259c-4408-b6ee-fe6784baa836",
+                name: "Pierre",
+                enabled: true,
+            },
+            {
+                id: "08b59a41-29a2-48e2-8883-2df814327c76",
+                name: "Marin",
+                enabled: true,
+            },
+        ];
     });
 
-    it("should randomize array", ({ Collaborator[]}) => {
-        expect(randomizeArray(Collaborators)).not.toBe(Collaborators);
-=======
-    let items: Items[] = [
-        {
-            id: "11bf5b37-e0b8-42e0-8dcf-dc8c4aefc000",
-            name: "Valentin",
-            enabled: true,
-        },
-        {
-            id: "76ef592b-bfb6-41af-9c88-69939a2be6f2",
-            name: "Raphael",
-            enabled: true,
-        },
-        {
-            id: "74d81fe9-58c2-4ff0-9c6a-70bb1152e397",
-            name: "Quentin",
-            enabled: true,
-        },
-    ];
-    beforeEach(() => {
+    it<LocalTestContext>("Should randomize an array", ({ collaborators }) => {
+        const result = randomizeArray(collaborators);
+        expect(result).not.toBe(collaborators);
+        expect(result).toHaveLength(3);
     });
-    describe("randomize array", () => {
-        test("should randomize array", () => {
-            expect(randomizeArray(items)).not.toBe(items);
-        });
->>>>>>> origin/raph
+
+    it<LocalTestContext>("Should keep the same elements", ({
+        collaborators,
+    }) => {
+        const result = randomizeArray(collaborators);
+        expect(result).toEqual(expect.arrayContaining(collaborators));
     });
 });
