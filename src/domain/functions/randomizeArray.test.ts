@@ -1,4 +1,4 @@
-import { beforeEach, describe, expect, test, it } from "vitest";
+import { beforeEach, describe, expect, it } from "vitest";
 import randomizeArray from "./randomizeArray";
 import { Collaborator } from "../../interfaces/collaborator.intefaces";
 
