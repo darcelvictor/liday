@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { Collaborator } from "../../interfaces/collaborator.intefaces";
 import { saveInUrl } from "./saveInUrl";
+import { log } from "console";
 describe("randomizeArray", () => {
     interface LocalTestContext {
         collaborators: Collaborator[];
@@ -28,7 +29,9 @@ describe("randomizeArray", () => {
 
     it<LocalTestContext>("Should save array in URL", ({ collaborators }) => {
         const result = saveInUrl(collaborators);
-        expect(result).not.toBe(collaborators);
-        expect(result).contains(collaborators);
+        console.log(result);
+        expect(result).contains(
+            collaborators.map((value) => value.name).join(",")
+        );
     });
 });

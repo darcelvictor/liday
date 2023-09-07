@@ -1,18 +1,22 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import randomizeArray from "@/domain/functions/randomizeArray";
 import { Button } from "@/components/ui/button";
 import { Collaborator } from "@/interfaces/collaborator.intefaces";
 import { equipe } from "@/data/team";
+import { saveInUrl } from "@/domain/functions/saveInUrl";
 
 export default function Home() {
     const initArray: Collaborator[] = equipe;
     const [array, setArray] = useState(initArray);
 
+
     function handleClick() {
         const tempArray = randomizeArray([...array]);
         setArray(tempArray);
     }
+
+    saveInUrl(equipe);
 
     return (
         <main className="flex flex-col p-4 justify-center h-100">
